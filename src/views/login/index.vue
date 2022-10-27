@@ -1,5 +1,6 @@
 <template>
   <div class="login-container">
+    <!-- model属性指定 form表单收集的数据放置到哪里， rules属性是el-form的属性表示对输入进行校验-->
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">

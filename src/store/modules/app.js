@@ -41,6 +41,8 @@ const actions = {
 }
 
 export default {
+  // 注意 这里配置了namespace=true， 这就导致每一个模块的actions mutations等属性之间是相互隔离的
+  // https://vuex.vuejs.org/zh/guide/modules.html#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4
   namespaced: true,
   state,
   mutations,

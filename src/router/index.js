@@ -1,3 +1,8 @@
+/* eslint-disable object-curly-spacing */
+/* eslint-disable arrow-spacing */
+/* eslint-disable comma-spacing */
+/* eslint-disable quotes */
+/* eslint-disable key-spacing */
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -43,6 +48,8 @@ export const constantRoutes = [
     hidden: true
   },
 
+  //  当访问/的时候会展示Layout组件，同时会redirect到 /dashboard 这是一个子路由
+  // 注意我们发现这里配置的每个路由 大部分都是 component=Layout，这是因为Layout这个组件本身 占用了整个网页页面，我们的路由实际上是控制了Layout内部的 AppMain组件的展示内容，所以在每个路由控制里面都有 children子录用来控制展示哪个组件
   {
     path: '/',
     component: Layout,
@@ -50,6 +57,7 @@ export const constantRoutes = [
     children: [{
       path: 'dashboard',
       name: 'Dashboard',
+      //import命令能够接收什么参数 import()函数就能接收什么参数，两者的区别主要是后者为动态加载
       component: () => import('@/views/dashboard/index'),
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
@@ -156,6 +164,38 @@ export const constantRoutes = [
       {
         path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
         meta: { title: 'External Link', icon: 'link' }
+      }
+    ]
+  },
+  {
+    path:'/product',
+    component:Layout,
+    name:'Product',
+    meta:{title:"商品管理",icon:'el-icon-goods'},
+    children:[
+      {
+        path:'trademark',
+        name:"TradeMark",
+        component:()=>import('@/views/product/tradeMark'),
+        meta:{title:'品牌管理'}
+      },
+      {
+        path:'attr',
+        name:"Attr",
+        component:()=>import('@/views/product/Attr'),
+        meta:{title:'平台属性管理'}
+      },
+      {
+        path:'spu',
+        name:"Spu",
+        component:()=>import('@/views/product/Spu'),
+        meta:{title:'Spu管理'}
+      },
+      {
+        path:'sku',
+        name:"Sku",
+        component:()=>import('@/views/product/Sku'),
+        meta:{title:'Sku管理'}
       }
     ]
   },

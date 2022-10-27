@@ -47,3 +47,11 @@
 .el-range-separator {
   box-sizing: content-box;
 }
+
+
+/**
+VUE 如何覆盖element组件样式
+**/
+.el-card_header{
+  border-bottom: none;
+}

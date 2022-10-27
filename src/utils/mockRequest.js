@@ -5,16 +5,15 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
+  baseURL: process.env.VUE_APP_MOCK_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 6000 // request timeout
+  timeout: 5000 // request timeout
 })
 
 // request interceptor
 service.interceptors.request.use(
   config => {
     // do something before request is sent
-    console.log(axios)
 
     if (store.getters.token) {
       // let each request carry token
@@ -45,12 +44,10 @@ service.interceptors.response.use(
    * You can also judge the status by HTTP Status Code
    */
   response => {
-    console.log(response)
     const res = response.data
-    console.log(res)
+
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 20000 && res.code !== 200) { // 响应失败,mock返回的是20000，服务器返回的是200
-    
       Message({
         message: res.message || 'Error',
         type: 'error',

@@ -1,12 +1,17 @@
+
+// 使用mockjs 模拟假数据
 const Mock = require('mockjs')
 const { param2Obj } = require('./utils')
 
 const user = require('./user')
 const table = require('./table')
+//home的mock数据
+const home =require('./home')
 
 const mocks = [
   ...user,
-  ...table
+  ...table,
+  ...home
 ]
 
 // for front mock
@@ -29,6 +34,7 @@ function mockXHR() {
 
   function XHR2ExpressReqWrap(respond) {
     return function(options) {
+      console.log("XHR2ExpressReqWrap")
       let result = null
       if (respond instanceof Function) {
         const { body, type, url } = options

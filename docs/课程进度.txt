@@ -1,0 +1,7 @@
+https://www.bilibili.com/video/BV1Vf4y1T7bw/?p=140&spm_id_from=pageDriver&vd_source=ed9f3fef970d3188b36d901ef62c9f31
+
+
+
+问题：1. 为什么  api 中可以 import request from './request'  然后就可以直接执行 request()
+
+2. state 中  actions mutations函数的参数

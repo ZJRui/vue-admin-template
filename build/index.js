@@ -1,3 +1,6 @@
+
+//index.js webpack配置文件
+
 const { run } = require('runjs')
 const chalk = require('chalk')
 const config = require('../vue.config.js')

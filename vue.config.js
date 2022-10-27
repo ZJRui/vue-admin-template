@@ -1,4 +1,7 @@
 'use strict'
+
+// vue.config.js 是一个可选的配置文件，如果项目的 (和 package.json 同级的) 根目录中存在这个文件，那么它会被 @vue/cli-service 自动加载。你也可以使用 package.json 中的 vue 字段，但是注意这种写法需要你严格遵照 JSON 的格式来写。
+
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
 
@@ -27,7 +30,8 @@ module.exports = {
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV === 'development',
+  // lintOnSave: process.env.NODE_ENV === 'development',
+  lintOnSave: false,
   productionSourceMap: false,
   devServer: {
     port: port,
@@ -36,7 +40,19 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    // 配置代理服务器
+    proxy: {
+      '/dev-api': {
+        target: 'http://gmall-h5-api.atguigu.cn', // https://console.apipost.cn/apis/project/38101894-9551-44bd-c5e3-cfdfe9e9d0d6
+        pathRewrite: { '^/dev-api': '' } // 如果不希望传递/dev-api，则需要重写路径：
+
+      }
+    },
+    //开启mock数据
+    before:function(app,server,compiler){
+      console.log("vue-config.js.devserver.before")
+      require('./mock/mock-server.js')
+    }
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
