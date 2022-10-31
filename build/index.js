@@ -1,4 +1,8 @@
 
+// 问题：为什么会有这个问题件： 在package.json文件中配置了script：
+//"preview": "node build/index.js --preview",
+
+
 //index.js webpack配置文件
 
 const { run } = require('runjs')
