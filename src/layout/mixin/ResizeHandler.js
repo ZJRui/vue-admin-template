@@ -1,5 +1,10 @@
 import store from '@/store'
 
+/**
+ * 为什么可以直接使用 document
+ * 1.当你安装 TypeScript 时，同时也安装了一些语言内置的声明文件 lib.dom.d.ts lib.d.ts  。这个文件包含 JavaScript 运行时以及 DOM 中存在各种常见的环境声明。
+ * lib.d.ts 的内容主要是一些变量声明（如：window、document、math）和一些类似的接口声明（如：Window、Document、Math）。
+ */
 const { body } = document
 const WIDTH = 992 // refer to Bootstrap's responsive design
 

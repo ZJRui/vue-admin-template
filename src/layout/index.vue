@@ -1,6 +1,6 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
+    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" ></div>
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
@@ -12,7 +12,11 @@
 </template>
 
 <script>
+/**
+ * 因为components 目录下有一个index.js文件
+ */
 import { Navbar, Sidebar, AppMain } from './components'
+
 import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
@@ -24,6 +28,9 @@ export default {
   },
   mixins: [ResizeMixin],
   computed: {
+    /**
+     * 使用计算属性监听 state中的 sidebar 来控制 侧边栏的展开和关闭
+     */
     sidebar() {
       return this.$store.state.app.sidebar
     },

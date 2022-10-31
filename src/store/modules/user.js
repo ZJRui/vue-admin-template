@@ -14,6 +14,10 @@ const state = getDefaultState()
 
 const mutations = {
   RESET_STATE: (state) => {
+    /**
+     * 重置state状态。
+     * Vue中重置组件的状态： Object.assign(this.$data, this.$options.data())
+     */
     Object.assign(state, getDefaultState())
   },
   SET_TOKEN: (state, token) => {
@@ -43,6 +47,12 @@ const actions = {
     })
   },
 
+  /**
+   *  问题：什么时候getInfo? 不是登录的时候，而是在路由 转换的时候进行拦截。 判断当前是否已经存在token 是否已经存在了userInfo，如果存在token则获取用户信息
+   * 
+   * @param {*} param0 
+   * @returns 
+   */
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
