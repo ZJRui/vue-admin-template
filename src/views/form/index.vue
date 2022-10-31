@@ -65,6 +65,9 @@ export default {
   },
   methods: {
     onSubmit() {
+      /**
+       * Element 为 Vue.prototype 添加了全局方法 $message。因此在 vue instance 中可以采用本页面中的方式调用 Message。
+       */
       this.$message('submit!')
     },
     onCancel() {
