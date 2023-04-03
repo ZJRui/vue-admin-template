@@ -9,6 +9,8 @@ import { getToken } from "@/utils/auth";
  * 当我们打包生产环境 是 vue_app-base-api=/prod-api
  * 因此我们发送的所有的请求前面偶会带有 /prod-api.
  * 
+ * Vue_App_base_Api 是在 .env.development 和 .env.production 中定义的
+ * 
  */
 
 // create an axios instance
